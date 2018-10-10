@@ -39,14 +39,34 @@ int main()
 		cout << "\tprintdatatable (NombreTabla)\n";
 		cout << "\tsalir\n\n";
 		cout << "> ";
-		fflush( stdin );
+		fflush( stdin );				// limpia el bufer de basura
 		ejecutado = false;
 		
+		/*
+		 * Lee de la entrada estandar
+		 * guarda en un string llamado comando
+		 * realiza dicha tarea hasta que llegue un fin de lina o MAX?COMANDO
+		 */
 		fgets (comando, MAX_COMANDO, stdin);
-
+		
+		/*
+		 * El string comando es dividido segun el patron "( ,)"
+		 * la primer division se guarda en pch
+		 */
 		pch = strtok (comando,"( ,)");
-
+		
+		/*
+		 * Primer escala de if anidados
+		 * strcmp compara dos string
+		 * si pch es igual a alguno de los comando verificamos que los pch* tenga la informacion adecuada para seguir
+		 */
 		if (strcmp (pch, "createTable") == 0){
+			/*
+			 * En este punto el primer pch tenia como comando crear tabla, ahora el segundo pch tendra el nombre
+			 * createTable (nombreTabla)
+			 * pch = createTable
+			 * pch = nombreTabla
+			 */
 			pch = strtok (NULL, "( ,)");
 			if (pch != NULL){
 				ret = createTable (bd, pch);

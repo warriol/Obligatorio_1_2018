@@ -12,7 +12,10 @@
 using namespace std;
 
 struct nodo_bd{
- //
+	//
+	char * nombreBD;
+	tabla t;
+	bd * sig;
 };
 
 struct nodo_tabla{
@@ -73,7 +76,9 @@ TipoRet createTable (t & t, char *nombreTabla){
 }
 
 TipoRet dropTable (bd & bd,char *nombreTabla){
-	//cout << " - dropTable " << nombreTabla << endl;;
+// Elimina de la base de datos la tabla de nombre nombreTabla, y las tuplas
+// que la misma posee, si nombreTabla existe.
+	// cout << " - dropTable " << nombreTabla << endl;
 	return NO_IMPLEMENTADA;
 }
 
