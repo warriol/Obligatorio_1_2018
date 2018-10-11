@@ -25,6 +25,33 @@ struct nodo_columna{
  * Wilson Arriola
  * 11/10/2018
  */
+void creo_DB_de_prueba_c(c & col){
+// crea columna de prueba
+	col = new (nodo_columna);
+	col->cant = 3;
+	col->nomCo = new (char);
+	strcpy(col->nomCo,"Cedula");
+	// tupla
+	creo_DB_de_prueba_c_t(col->x);
+	col->sig = new (nodo_columna);
+	col->sig->cant = 3;
+	col->sig->nomCo = new (char);
+	strcpy(col->sig->nomCo,"Nombre");
+	// tupla
+	creo_DB_de_prueba_c_t(col->sig->x);
+	col->sig->sig = new (nodo_columna);
+	col->sig->sig->cant = 3;
+	col->sig->sig->nomCo = new (char);
+	strcpy(col->sig->sig->nomCo,"Apellido");
+	// tupla
+	creo_DB_de_prueba_c_t(col->sig->sig->x);
+	col->sig->sig->sig = NULL;
+}
+
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
 bool dime_si_nomCol_en_nomTbl(c col, char * nombreCol){
 // Si nombreColumna pertenece a NombreTabla devuelve True, sino False
 // Pre: nombreTabla debe existir en la DB

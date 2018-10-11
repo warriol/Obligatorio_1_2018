@@ -15,7 +15,7 @@ using namespace std;
 
 
 struct nodo_tabla{
-	char nomTa[MAX_NOMBRE];
+	char * nomTa;
 	c x;
 	t sig;
 };
@@ -26,6 +26,11 @@ struct nodo_tabla{
  */
 void creo_DB_de_prueba(t & tbl){
 // Para realizar testeo durante el desarrollo se crea una base de prueba
+	tbl = new (nodo_tabla);
+	tbl->nomTa = new (char);
+	strcpy(tbl->nomTa, "Personas");
+	creo_DB_de_prueba_c(tbl->x);
+	tbl->sig = NULL;
 }
 
 
@@ -56,7 +61,7 @@ TipoRet createTable (t & tbl, char * nombreTabla){
 	bool existe = false;
 	if (tbl== NULL){			//Si no hay ninguna tabla
 		tbl = new(nodo_tabla);
-		cout << " - estoy aca " << endl;
+		tbl->nomTa = new (char);
     		strcpy(tbl->nomTa, nombreTabla);
     		tbl->sig = NULL;
 		return OK;
@@ -142,8 +147,13 @@ TipoRet dropCol (t & tbl, char * nombreTabla, char * nombreCol){
 	//return NO_IMPLEMENTADA;
 }
 
-TipoRet printdatatable (t t, char *NombreTabla){
-	//cout << NombreTabla << endl;
+TipoRet printdatatable (t tbl, char *NombreTabla){
+	cout << tbl->nomTa << endl;
+	cout << tbl->x->nomCo << ":" << tbl->x->x->datoTu << endl;
+	/*
+	cout << tbl->sig->x->nomCo << ":" << tbl->sig->x->x->datoTu << endl;
+	cout << tbl->sig->sig->x->nomCo << ":" << tbl->sig->sig->x->x->datoTu << endl;
+	*/
 	return NO_IMPLEMENTADA;
 }
 

@@ -21,9 +21,12 @@ using namespace std;
 int main()
 {
 	t t = createTa();
+	// creo tablas de prueba
+	creo_DB_de_prueba(t);
 	char * comando = new (char[MAX_COMANDO]);
 	char * pch, * pch1, * pch2, *pch3;
 	TipoRet ret;
+	ret = printdatatable (t,"Personas");
 	bool ejecutado = false;
 
 	bool salir = false;

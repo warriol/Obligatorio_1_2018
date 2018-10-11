@@ -16,6 +16,13 @@ typedef struct nodo_columna* c;
  * Wilson Arriola
  * 11/10/2018
  */
+void creo_DB_de_prueba_c(c & col);
+// crea columna de prueba
+
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
 bool dime_si_nomCol_en_nomTbl(c col, char * nombreCol);
 // Si nombreColumna pertenece a NombreTabla devuelve True, sino False
 // Pre: nombreTabla debe existir en la DB

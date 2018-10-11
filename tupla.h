@@ -12,6 +12,11 @@
 
 typedef struct nodo_tupla* tupla;
 
-
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
+void creo_DB_de_prueba_c_t(tupla & t);
+// crea columna de prueba
 
 #endif

@@ -31,7 +31,7 @@ TipoRet dropTable (t & t,char *nombreTabla);
 // Elimina de la base de datos la tabla de nombre nombreTabla, y las tuplas
 // que la misma posee, si nombreTabla existe.
 
-TipoRet printdatatable (t t,char *NombreTabla);
+TipoRet printdatatable (t tbl,char *NombreTabla);
 // Imprime las tuplas de la tabla de nombre nombreTabla, si ésta existe. Los nombres y los valores
 // de las columnas se expresan en el formato columna1:columna2: … :columnan. Las tuplas se muestran
 // ordenadas ascendentemente por la PRIMARY KEY. Primero se imprime el nombre de la tabla, luego los

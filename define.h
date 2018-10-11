@@ -9,7 +9,6 @@
 // Modulo de Definiciones Generales.
 
 #define MAX_COMANDO 128
-#define MAX_NOMBRE 20
 
 enum _retorno{OK, ERROR, NO_IMPLEMENTADA};
 typedef enum _retorno TipoRet;
