@@ -6,10 +6,24 @@
 
 typedef struct nodo_tabla* t;
 
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
+void creo_DB_de_prueba(t & tbl);
+// Para realizar testeo durante el desarrollo se crea una base de prueba
+
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
+void mostrar_Msj_Error(int id, char * dato1, char * dato2);
+// Muestra los mensajes de error de acuerdo a un codigo interno
+
 t createTa();
 // Crea la base de datos vacía.
 
-TipoRet createTable (t & t,char *nombreTabla);
+TipoRet createTable (t & tbl,char *nombreTabla);
 // Crea una nueva tabla vacía (sin columnas ni tuplas) en la base de datos
 // con nombre nombreTabla, siempre que no exista ya una tabla con dicho nombre.
 
@@ -30,7 +44,7 @@ TipoRet addCol (t & t,char * nombreTabla,char *nombreCol);
 // operación no resultará válida. Si esta es la primera columna que se agrega a la
 // tabla su calificador será PRIMARY KEY. El tipo de datos de la nueva columna es string.
 
-TipoRet dropCol (t & t,char *nombreTabla,char *nombreCol);
+TipoRet dropCol (t & tbl,char *nombreTabla,char *nombreCol);
 // Elimina de la tabla de nombre nombreTabla, si ésta existe, la columna de nombre
 // nombreCol, si ésta existe. Si la tabla tiene tuplas, entonces se eliminará de éstas
 // el campo correspondiente a la columna eliminada. Si la tabla posee una única columna

@@ -37,7 +37,7 @@ int main()
 		cout << "\tdeleteFrom (nombreTabla, condicionEliminar)\n";
 		cout << "\tupdate(nombreTabla, condicionModificar, columnaModificar, valorModificar)\n";
 		cout << "\tprintdatatable (NombreTabla)\n";
-		cout << "\tsalir\n\n";
+		cout << "\tsalir()\n\n";
 		cout << "> ";
 		fflush( stdin );
 		ejecutado = false;
@@ -170,6 +170,6 @@ int main()
 	}while (!salir);
 	cout << "\n\n - CHAUU!!!!\n";
 
-	t = destroyt(t);
+	t = destroyTa(t);
 	delete [] comando;
 }

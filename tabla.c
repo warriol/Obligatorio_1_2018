@@ -15,37 +15,64 @@ using namespace std;
 
 
 struct nodo_tabla{
-	char* nomTa;
+	char nomTa[MAX_NOMBRE];
 	c x;
 	t sig;
 };
+
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
+void creo_DB_de_prueba(t & tbl){
+// Para realizar testeo durante el desarrollo se crea una base de prueba
+}
+
+
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
+void mostrar_Msj_Error(int id, char * dato1, char * dato2){
+// Muestra los mensajes de error de acuerdo a un codigo interno
+	switch(id){
+		case 100:
+			// ERROR: tabla vacia
+			cout << " - la tabla que hace referencia <" << dato1 << "> NO EXISTE!!! " << endl;
+		break;
+		default :
+			cout << " - ocurrio un error general. " << endl;
+	}
+}
+
 
 t createTa(){
 	//
 	return NULL;
 }
 
-TipoRet createTable (t & t, char *nombreTabla){
+TipoRet createTable (t & tbl, char * nombreTabla){
 	//cout << " - createTable " << nombreTabla << endl;;
 	bool existe = false;
-	if (t== NULL){			//Si no hay ninguna tabla
-		t = new(nodo_tabla);
-    		strcpy(t->nomTa,nombreTabla);
-    		t->sig = NULL;
+	if (tbl== NULL){			//Si no hay ninguna tabla
+		tbl = new(nodo_tabla);
+		cout << " - estoy aca " << endl;
+    		strcpy(tbl->nomTa, nombreTabla);
+    		tbl->sig = NULL;
 		return OK;
 	}else{
-		while ((t!= NULL) && (!existe)){		//Mientras existan tablas y la tabla a crear no exista
-			if (strcmp(t->nomTa,nombreTabla)==0){		//Si la tabla existe devuelvo error sino sigo buscando
+		while ((tbl!= NULL) && (!existe)){		//Mientras existan tablas y la tabla a crear no exista
+			if (strcmp(tbl->nomTa,nombreTabla)==0){		//Si la tabla existe devuelvo error sino sigo buscando
 				existe = true;
 				return ERROR;
 			}else{
-				t = t->sig;
+				tbl = tbl->sig;
 			}
 		}
 		if (!existe){					//Si no existe la tabla a crear, la creo. Sino error
-			t = new(nodo_tabla);
-    			strcpy(t->nomTa,nombreTabla);
-    			t->sig = NULL;
+			tbl = new(nodo_tabla);
+    			strcpy(tbl->nomTa,nombreTabla);
+    			tbl->sig = NULL;
 			return OK;
 		}else{
 			return ERROR;
@@ -59,18 +86,21 @@ TipoRet createTable (t & t, char *nombreTabla){
 /*
  *	profe
  */
-TipoRet addCol (t & t,char *nombreTabla,char *nombreCol){
-	t aux = t
-	while (aux != NULL) && strcmp(t->nomTa, nombreTabla) != 0){
+ 
+TipoRet addCol (t & tbl,char *nombreTabla,char *nombreCol){
+/*
+	t aux = t;
+	while ((aux != NULL) && strcmp(t->nomTa, nombreTabla) != 0){
 		aux = aux->sig;
 	}
 	if ((aux != NULL) && (strcmp(aux->nomTa, nombreTabla) == 0)){
-		addCol_final(aux->x, char *nombreCol)
+		//addCol_final(aux->x, char *nombreCol)
 		return OK;
 	}
 	else
 		return ERROR;
-
+*/
+	return NO_IMPLEMENTADA;
 }
 
 
@@ -82,9 +112,8 @@ TipoRet dropTable (t & t,char *nombreTabla){
 /*
  * Wilson Arriola
  * 11/10/2018
- *
  */
-TipoRet dropCol (t & t, char * nombreTabla, char * nombreCol){
+TipoRet dropCol (t & tbl, char * nombreTabla, char * nombreCol){
 // Elimina de la tabla de nombre nombreTabla, si ésta existe, la columna de nombre
 // nombreCol, si ésta existe. Si la tabla tiene tuplas, entonces se eliminará de éstas
 // el campo correspondiente a la columna eliminada. Si la tabla posee una única columna
@@ -94,16 +123,17 @@ TipoRet dropCol (t & t, char * nombreTabla, char * nombreCol){
 
 	//cout << " - dropCol " << nombreTabla << " " << NombreCol << endl;;
 	
-	t aux = t								// tabla auxiliar
-	if (t == NULL)								// tabla VACIA
+	t aux = tbl;								// tabla auxiliar
+	if (tbl == NULL){							// tabla VACIA
+		mostrar_Msj_Error(100, nombreTabla, nombreCol);			// mensaje al usuario
 		return ERROR;							// ERROR y salgo
-	else
-		while ( (aux != NULL) && (strcmp(t->nomTa, nombreTabla) != 0) ){// mientras aux no sea nulo y nombrTa diferente sigo buscando
+	}else
+		while ( (aux != NULL) && (strcmp(tbl->nomTa, nombreTabla) != 0) ){// mientras aux no sea nulo y nombrTa diferente sigo buscando
 			aux = aux->sig;
 		}
 		if (strcmp(aux->nomTa, nombreTabla) == 0){			// ENCONTRE nombreTabla
 			// Verifico si nombreColumna existe en NombreTabla
-			dime_si_nomCol_en_nomTbl(aux->x, char * nombreCol);
+			dime_si_nomCol_en_nomTbl(aux->x, nombreCol);
 			return OK;
 		}
 		else								// la tabla NO esta vacìa pero NombreTabla no existe

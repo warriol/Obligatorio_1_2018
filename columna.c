@@ -21,10 +21,26 @@ struct nodo_columna{
 	c sig;
 };
 
+/*
+ * Wilson Arriola
+ * 11/10/2018
+ */
 bool dime_si_nomCol_en_nomTbl(c col, char * nombreCol){
 // Si nombreColumna pertenece a NombreTabla devuelve True, sino False
 // Pre: nombreTabla debe existir en la DB
+	// se asume que no existe
+	bool retorno = false;
 	
+	while ( (col != NULL) && (strcmp(col->nomCo, nombreCol) != 0) ){
+		// mientras nomCo no sea NULL, comparo los nombre
+		col->sig;
+	}
+	
+	if (strcmp(col->nomCo, nombreCol) == 0)
+		// si existe devuelvo verdadero
+		retorno = true;
+		
+	return retorno;
 }
 
 
